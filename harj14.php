@@ -22,24 +22,45 @@
             <h1>pilid</h1>
             <div class="row">
                 <?php
-                $pildid1 = 'pildid/';
-                $asukoht = opendir($pildid1);
-                $pildid2 = array();
-                while ($fail = readdir($asukoht)){
-                    if ($fail != '.' && $fail != '..'){
-                        array_push($pildid2, $fail);
+                 $imagedir = 'pildid/';
+               function suvaPilt($dir) {
+                $images = glob($dir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+                $randomImage = $images[array_rand($images)];
+                return $randomImage;
+            }
+    
+            function pisipilt($dir, $columns = 3) {
+                $images = glob($dir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+                $rowCount = ceil(count($images) / $columns);
+                for ($i = 0; $i < $rowCount; $i++) {
+                    echo '<div class="row">';
+                    for ($j = 0; $j < $columns; $j++) {
+                        $index = $i * $columns + $j;
+                        if ($index < count($images)) {
+                            echo '<div class="col">';
+                            echo '<a href="' . $images[$index] . '" target="_blank">';
+                            echo '<img src="' . $images[$index] . '" class="thumbnail" onclick="pisipiltSuureks(\'' . $images[$index] . '\');">';
+                            echo '</a>';
+                            echo '</div>';
+                        }
                     }
+                    echo '</div>';
                 }
-                for ($i = 1; $i <= 3; $i++) {
-                    $rand = rand(0, 5);
-                    echo "<div class='col-md-4'>
-                    <a href='pildid/".$pildid2[$rand]."'>
-                    <img src='pildid/".$pildid2[$rand]."' class='img-fluid'/>
-                    </div>";
+            }
+            ?>
+            
+            <script>
+                function pisipiltSuureks(imageSrc) {
+                    var largeImageWindow = window.open('', '_blank');
+                    largeImageWindow.document.write('<img src="' + imageSrc + '" style="max-width: 100%;">');
                 }
-
-
-                ?>
+            </script>
+    
+            <h2>Suvaline pilt:</h2>
+            <img src="<?php echo suvaPilt($imagedir); ?>" style="max-width: 100%;">
+    
+            <h2>Pisipildid veergudes:</h2>
+            <?php pisipilt($imagedir, 3); ?>
         </div>
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
