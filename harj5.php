@@ -134,7 +134,7 @@ foreach ($riigid as $riik) {
     }
 }
 
-echo $pikkus; // Output the longest string
+echo $pikkus;
 echo "<br>";
 echo $maxpikkus;
 
