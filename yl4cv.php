@@ -49,7 +49,7 @@
                     <a class="navbar-brand text-dark" href="#"></a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <a class="navbar-brand" href='#'>
-                            narep.ee
+                            hnarep.ee
                         </a>
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -62,7 +62,7 @@
                                 <a class="nav-link " href="oskused.php?leht=oskused">Oskused</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="kontaktid.php?leht=konntakt">Kontakt</a>
+                                <a class="nav-link" href="kontakt.php?leht=konntakt">Kontakt</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="admin.php?leht=admin">Admin</a>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 mt-5">
-                    <img src=mees.jpg class="object-fit-contain rounded-circle img-fluid">
+                    <img src=<?php echo "'".$tekstimassiiv[6]."'";?> class="object-fit-contain rounded-circle img-fluid">
                 </div>
             </div>
 
@@ -116,7 +116,7 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <img src=nerd.jpg class="img-fluid">
+                    <img src=<?php echo "'".$tekstimassiiv[7]."'"; ?> class="img-fluid">
                 </div>
 
                 <div class="col-sm-6">
